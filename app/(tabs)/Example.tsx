@@ -1,4 +1,3 @@
-import { Video } from 'expo-av';
 import React, { useState } from 'react';
 import {
   Image,
@@ -20,14 +19,14 @@ export default function Example() {
   return (
     <SafeAreaView style={styles.safeArea}>
       {/* Videó háttér */}
-      <Video
-        source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/9694804-uhd_2160_4096_25fps%20(1).mp4' }}
-        style={StyleSheet.absoluteFill}
-        resizeMode="cover"
-        isLooping
-        isMuted
-        shouldPlay
-      />
+      <video
+  src="https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/9694804-uhd_2160_4096_25fps%20(1).mp4"
+  autoPlay
+  loop
+  muted
+  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+/>
+
 
       <ScrollView contentContainerStyle={styles.container}>
         {/* Header */}
