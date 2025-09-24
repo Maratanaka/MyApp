@@ -33,7 +33,7 @@ export default function Example() {
             alt="App Logo"
             resizeMode="contain"
             style={styles.headerImg}
-            source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/blue-smoke.png' }} // ÚJ kép URL
+            source={{ uri: 'https://githubusercontent.com/Maratanaka/MyApp/master/assets/images/blue-smoke.png' }} // ÚJ kép URL
           />
 
           <Text style={styles.title}>
