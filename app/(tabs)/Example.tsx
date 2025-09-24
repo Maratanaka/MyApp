@@ -1,13 +1,14 @@
 import { Video } from 'expo-av';
 import React, { useState } from 'react';
 import {
-    Image,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 export default function Example() {
@@ -15,11 +16,12 @@ export default function Example() {
     email: '',
     password: '',
   });
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.safeArea}>
       {/* Videó háttér */}
       <Video
-        source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/9694804-uhd_2160_4096_25fps%20(1).mp4' }} // Saját videó URL
+        source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/9694804-uhd_2160_4096_25fps%20(1).mp4' }}
         style={StyleSheet.absoluteFill}
         resizeMode="cover"
         isLooping
@@ -27,28 +29,27 @@ export default function Example() {
         shouldPlay
       />
 
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
+        {/* Header */}
         <View style={styles.header}>
           <Image
-            alt="App Logo"
-            resizeMode="contain"
+            source={require('../../assets/images/logo3.png')}
             style={styles.headerImg}
-            source={{ uri: 'https://githubusercontent.com/Maratanaka/MyApp/master/assets/images/blue-smoke.png' }} // ÚJ kép URL
+            resizeMode="contain"
+            accessibilityLabel="App Logo"
           />
-
           <Text style={styles.title}>
-            Sign in to <Text style={{ color: '#075eec' }}>MyApp</Text>
+            Sign in to <Text style={{ color: '#ffffffff' }}>MyApp</Text>
           </Text>
-
           <Text style={styles.subtitle}>
             Get access to your portfolio and more
           </Text>
         </View>
 
+        {/* Form */}
         <View style={styles.form}>
           <View style={styles.input}>
             <Text style={styles.inputLabel}>Email address</Text>
-
             <TextInput
               autoCapitalize="none"
               autoCorrect={false}
@@ -58,12 +59,12 @@ export default function Example() {
               placeholder="john@example.com"
               placeholderTextColor="#6b7280"
               style={styles.inputControl}
-              value={form.email} />
+              value={form.email}
+            />
           </View>
 
           <View style={styles.input}>
             <Text style={styles.inputLabel}>Password</Text>
-
             <TextInput
               autoCorrect={false}
               clearButtonMode="while-editing"
@@ -72,53 +73,58 @@ export default function Example() {
               placeholderTextColor="#6b7280"
               style={styles.inputControl}
               secureTextEntry={true}
-              value={form.password} />
+              value={form.password}
+            />
           </View>
 
           <View style={styles.formAction}>
-            <TouchableOpacity
-              onPress={() => {
-                // handle onPress
-              }}>
+            <TouchableOpacity onPress={() => { /* handle onPress */ }}>
               <View style={styles.btn}>
                 <Text style={styles.btnText}>Sign in</Text>
               </View>
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity
-            onPress={() => {
-              // handle link
-            }}>
+          <TouchableOpacity onPress={() => { /* handle link */ }}>
             <Text style={styles.formLink}>Forgot password?</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      <TouchableOpacity
-        onPress={() => {
-          // handle link
-        }}>
-        <Text style={styles.formFooter}>
-          Don't have an account?{' '}
-          <Text style={{ textDecorationLine: 'underline' }}>Sign up</Text>
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => { /* handle link */ }}>
+          <Text style={styles.formFooter}>
+            Don't have an account?{' '}
+            <Text style={{ textDecorationLine: 'underline' }}>Sign up</Text>
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#000', // Fekete háttér
+  },
   container: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
     padding: 24,
+    paddingBottom: 40,
+  },
+  header: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 36,
+  },
+  headerImg: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+    borderRadius: 30,
   },
   title: {
     fontSize: 31,
     fontWeight: '700',
-    color: '#1D2A32',
+    color: '#8d8d8dff',
     marginBottom: 6,
   },
   subtitle: {
@@ -126,50 +132,16 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#929292',
   },
-  /** Header */
-  header: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 36,
-  },
-  headerImg: {
-    width: 80,
-    height: 80,
-    alignSelf: 'center',
-    marginBottom: 36,
-  },
-  /** Form */
   form: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
+    marginTop: 20,
   },
-  formAction: {
-    marginTop: 4,
-    marginBottom: 16,
-  },
-  formLink: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#075eec',
-    textAlign: 'center',
-  },
-  formFooter: {
-    paddingVertical: 24,
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#222',
-    textAlign: 'center',
-    letterSpacing: 0.15,
-  },
-  /** Input */
   input: {
     marginBottom: 16,
   },
   inputLabel: {
     fontSize: 17,
     fontWeight: '600',
-    color: '#222',
+    color: '#ffffffff',
     marginBottom: 8,
   },
   inputControl: {
@@ -182,9 +154,11 @@ const styles = StyleSheet.create({
     color: '#222',
     borderWidth: 1,
     borderColor: '#C9D3DB',
-    borderStyle: 'solid',
   },
-  /** Button */
+  formAction: {
+    marginTop: 40, // Gomb lejjebb
+    marginBottom: 16,
+  },
   btn: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -193,13 +167,28 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderWidth: 1,
-    backgroundColor: '#075eec',
-    borderColor: '#075eec',
+    backgroundColor: '#a8a8a8ff',
+    borderColor: '#000000ff',
   },
   btnText: {
     fontSize: 18,
     lineHeight: 26,
     fontWeight: '600',
     color: '#fff',
+  },
+  formLink: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#ffffffff',
+    textAlign: 'center',
+    marginTop: 60,
+  },
+  formFooter: {
+    paddingVertical: 10,
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#9a9a9aff',
+    textAlign: 'center',
+    letterSpacing: 0.15,
   },
 });
