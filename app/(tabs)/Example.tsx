@@ -19,7 +19,7 @@ export default function Example() {
     <SafeAreaView style={{ flex: 1 }}>
       {/* Videó háttér */}
       <Video
-        source={{ uri: 'https://www.pexels.com/video/studio-footage-of-smoke-9694804/' }} // Saját videó URL
+        source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/9694804-uhd_2160_4096_25fps%20(1).mp4' }} // Saját videó URL
         style={StyleSheet.absoluteFill}
         resizeMode="cover"
         isLooping
@@ -33,7 +33,8 @@ export default function Example() {
             alt="App Logo"
             resizeMode="contain"
             style={styles.headerImg}
-            source={{ uri: 'https://assets.withfra.me/SignIn.2.png' }} />
+            source={{ uri: 'https://raw.githubusercontent.com/Maratanaka/MyApp/master/assets/images/blue-smoke.png' }} // ÚJ kép URL
+          />
 
           <Text style={styles.title}>
             Sign in to <Text style={{ color: '#075eec' }}>MyApp</Text>
